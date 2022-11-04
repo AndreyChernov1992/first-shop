@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosClient = axios.create({
-    baseURL: `https://fakestoreapi.com/product`,
+    baseURL: process.env.REACT_APP_PRODUCTS,
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
@@ -9,9 +9,7 @@ const axiosClient = axios.create({
   });
 
   axiosClient.interceptors.response.use(
-    function (response) {
-      return response;
-    }, 
+    response => response, 
     function (error) {
       let res = error.response;
       if (res.status == 401) {
@@ -22,4 +20,4 @@ const axiosClient = axios.create({
     }
   );
 
-  export default {axiosClient};
+  export default axiosClient;
