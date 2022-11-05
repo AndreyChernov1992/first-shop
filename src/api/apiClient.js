@@ -11,8 +11,8 @@ const axiosClient = axios.create({
   axiosClient.interceptors.response.use(
     response => response, 
     error => {
-      let {response} = error;
-      if (response.status == 401) {
+      let {error} = response;
+      if (error.status == 401) {
         window.location.href = "https://fakestoreapi.com";
       }
       console.error("Looks like there was a problem. Status Code: " + res.status);
