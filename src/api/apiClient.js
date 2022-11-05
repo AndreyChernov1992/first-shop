@@ -12,7 +12,7 @@ const axiosClient = axios.create({
     response => response, 
     error => {
       const {error} = response;
-      if (error.status == 401) {window.location.href = process.env.REACT_APP_BASE_URL;}
+      if (error.status == 401) window.location.href = process.env.REACT_APP_BASE_URL;
       console.error("Looks like there was a problem. Status Code: " + res.status);
       return Promise.reject(error);
     }
