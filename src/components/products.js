@@ -17,15 +17,18 @@ class Products extends Component {
 
     getProducts() {
         return this.state.products.map(product =>
-        <li className="products" key={product.id}>
-        <img className="productImage" src={product.image} />
-        {product.title} {product.description} {product.price}</li>
+        <li className="product-list-item" key={product.id}>
+        <img className="product-list-item__image" src={product.image} />
+        <span className="product-list-item__title">{product.title}</span>
+        <p className="product-list-item__desc">{product.description}</p>
+        <span className="product-list-item__price">{product.price}$</span>
+         </li>
         )
     }
 
     render () {
         return (
-            <ul>{this.getProducts()}</ul>
+            <ul className="product-list">{this.getProducts()}</ul>
         )
     }
 }
