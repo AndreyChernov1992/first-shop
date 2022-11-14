@@ -1,9 +1,22 @@
+import React from "react";
+import {
+    BrowserRouter as Router,
+    Routes,
+    Route,
+} from "react-router-dom";
+import Products from "./components/products";
 import './assets/styles/App.css';
 
 function App() {
   return (
-    <div>Start</div>
+    <div>
+      <Routes>
+        <Route path="/" element={<Products />} />
+      </Routes>
+    </div>
   )
 }
 
 export default App;
+
+
