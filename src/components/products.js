@@ -1,21 +1,24 @@
 import React from "react";
 import { Component } from "react";
-import axiosClient from "../api/apiClient";
+import ProductsApi from "../api/apiMethods";
 
 class Products extends Component {
     state = {
         products: []
     }
 
+    
+
     componentDidMount() {
-        axiosClient.get('https://fakestoreapi.com/products')
+        const a = new ProductsApi()
+        a.getProducts()
         .then(res => {
             const products = res.data
             this.setState({products})
         })
     }
 
-    getProducts() {
+    getHtml() {
         return this.state.products.map(product =>
         <li className="product-list-item" key={product.id}>
         <img alt="product" className="product-list-item__image" src={product.image} />
@@ -29,7 +32,7 @@ class Products extends Component {
 
     render () {
         return (
-            <ul className="product-list">{this.getProducts()}</ul>
+            <ul className="product-list">{this.getHtml()}</ul>
         )
     }
 }

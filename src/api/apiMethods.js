@@ -1,7 +1,13 @@
-import React, { Component } from "react";
-import axiosClient from "./apiClient";
+import {BaseApi} from "./BaseApi";
 
-class ApiMethods extends Component  {
+class ProductsApi extends BaseApi  {
 
-    getApi
+    endpoint = '/products'
+    
+    getProducts (config) {
+        return this.request('GET', '', config)
+    }
+
 }
+
+export default ProductsApi
