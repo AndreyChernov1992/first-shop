@@ -1,17 +1,11 @@
 import React from "react";
-import {
-    Routes,
-    Route,
-} from "react-router-dom";
-import Products from "./components/products";
 import './assets/styles/App.css';
+import Routing from "./routing/router";
 
 function App() {
   return (
     <div>
-      <Routes>
-        <Route path="/" element={<Products />} />
-      </Routes>
+      <Routing />
     </div>
   )
 }

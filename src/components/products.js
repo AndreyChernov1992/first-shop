@@ -1,6 +1,6 @@
 import React from "react";
 import { Component } from "react";
-import ProductsApi from "../api/productsApi";
+import { apiMethods } from "../services/products";
 
 class Products extends Component {
     state = {
@@ -10,8 +10,7 @@ class Products extends Component {
     
 
     componentDidMount() {
-        const a = new ProductsApi()
-        a.getProducts()
+        apiMethods().getProducts()
             .then(res => {
                 const products = res.data
                 this.setState({products})
