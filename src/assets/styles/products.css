@@ -13,6 +13,8 @@
 .product-list-item__image {
     align-items: center;
     width: 15rem;
+    display: block;
+    padding-left: 25rem;
 }
 
 .product-list-item__title {
