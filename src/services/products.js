@@ -1,3 +1,9 @@
 import ProductsApi from "../api/productsApi";
 
-export const apiMethods = () => new ProductsApi()
+export function getData () {
+    let a = new ProductsApi()
+        return a.getProducts()
+}
+
+
+    
