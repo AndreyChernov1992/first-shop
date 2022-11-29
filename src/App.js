@@ -1,9 +1,15 @@
+import React from "react";
 import './assets/styles/App.css';
+import Routing from "./routing/router";
 
 function App() {
   return (
-    <div>Start</div>
+    <div>
+      <Routing />
+    </div>
   )
 }
 
 export default App;
+
+
