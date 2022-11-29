@@ -1,18 +1,15 @@
 import React from "react";
 import { Component } from "react";
-import { getData } from "../services/products";
+import { getProductsData } from "../services/products";
 
 class Products extends Component {
     state = {
         products: []
     }
 
-    componentDidMount() {
-        getData()
-            .then(res => {
-                const products = res.data
-                this.setState({products})
-            })
+    async componentDidMount() {
+        const products = await getProductsData()
+        this.setState({products})
     }
 
     renderProductList() {

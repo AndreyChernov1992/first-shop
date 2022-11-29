@@ -1,8 +1,9 @@
 import ProductsApi from "../api/productsApi";
 
-export function getData () {
-    let a = new ProductsApi()
-        return a.getProducts()
+export async function getProductsData () {
+    const api = new ProductsApi()
+        const {data} = await api.getProducts()
+        return data
 }
 
 
