@@ -17,8 +17,8 @@ class Products extends Component {
         <li className="product-list-item" key={product.id}>
         <img alt="product" className="product-list-item__image" src={product.image} />
         <span className="product-list-item__title">{product.title}</span>
-        <p className="product-list-item__desc">{product.description}</p>
         <span className="product-list-item__price">{product.price}$</span>
+        <button className="product-list-item__btn">Add to cart</button>
          </li>
         )
     }
