@@ -1,7 +1,7 @@
-@import "../components/variables";
-@import "../components/mixins";
-@import "products";
-@import "scrollbar";
+@import "variables";
+@import "mixins";
+@import "./view/products.scss";
+@import "./components/scrollbar.scss";
 
 body {
     margin: 0;
