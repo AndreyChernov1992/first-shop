@@ -34,7 +34,7 @@
             color: $secondary-color;
         }
     
-        @media (max-width: 1400px) {
+        @media (max-width: $laptop) {
             width: 12rem;
             height: 22rem;
     
@@ -55,7 +55,7 @@
                 font-size: $secondary-font;
             }
     }
-        @media (max-width: 992px) {
+        @media (max-width: $mobile) {
             width: 10rem;
             height: 18rem;
     
