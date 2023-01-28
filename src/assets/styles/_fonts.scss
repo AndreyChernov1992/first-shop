@@ -1,3 +1,9 @@
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  src: local("Roboto"),
+       url("../fonts/roboto.woff") format("woff");
+}
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Roboto';
     -webkit-font-smoothing: antialiased;
