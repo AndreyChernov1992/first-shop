@@ -2,7 +2,9 @@
   font-family: "Roboto";
   font-style: normal;
   src: local("Roboto"),
-       url("../fonts/roboto.ttf") format("ttf");
+       url("../fonts/roboto-light.ttf") format("ttf"),
+       url("../fonts/roboto-regular.ttf") format("ttf"),
+       url("../fonts/roboto-bold.ttf") format("ttf");
 }
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Roboto';
