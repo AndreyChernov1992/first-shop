@@ -7,7 +7,7 @@ import Products from "../components/products";
 function Routing() {
     return (
         <Routes>
-          <Route path="/" element={<Products />} />
+          <Route exact path="/" element={<Products />} />
         </Routes>
     )
   }
