@@ -1,33 +1,32 @@
 import React from "react";
 import { Component } from "react";
 import { getProductsData } from "../services/products";
+import Item from "./productsList";
 
-class Products extends Component {
+class ProductsList extends Component {
     state = {
         products: []
     }
 
-    async componentDidMount() {
-        const products = await getProductsData()
-        this.setState({products})
-    }
-
-    renderProductList() {
-        return this.state.products.map(product =>
-        <li className="product-list-item" key={product.id}>
-        <img alt="product" className="product-list-item__image" src={product.image} />
-        <span className="product-list-item__title">{product.title}</span>
-        <span className="product-list-item__price">{product.price}$</span>
-        <button className="product-list-item__btn">Add to Cart</button>
-         </li>
-        )
+    componentDidMount() {
+        const getProducts = async() => {
+            try {
+              const products = await getProductsData()
+              this.setState({products})
+            }
+            catch (err) {
+              console.log(err)
+            }
+          }
+      
+      getProducts()
     }
 
     render () {
         return (
-            <ul className="product-list">{this.renderProductList()}</ul>
+            <ul className="product-list">{this.state.products.map(product => <Item {...product} />)}</ul>
         )
     }
 }
 
-export default Products
+export default ProductsList
