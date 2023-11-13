@@ -5,6 +5,3 @@ export async function getProductsData () {
     const {data} = await api.getProducts()
     return data
 }
-
-
-    
