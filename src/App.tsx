@@ -1,4 +1,3 @@
-import React from "react";
 import Routing from "./routing/router";
 
 function App() {

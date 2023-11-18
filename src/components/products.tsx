@@ -1,7 +1,7 @@
-import React from "react";
 import { Component } from "react";
 import { getProductsData } from "../services/products";
 import Item from "./productsList";
+import { IProduct } from "../api/apiModel";
 
 class ProductsList extends Component {
     state = {
@@ -24,7 +24,7 @@ class ProductsList extends Component {
 
     render () {
         return (
-            <ul className="product-list">{this.state.products.map(product => <Item {...product} />)}</ul>
+          <ul className="product-list">{this.state.products.map(product => <Item {...product as IProduct} />)}</ul>
         )
     }
 }

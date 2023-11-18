@@ -1,10 +1,12 @@
-const Item = ({ id, image, title, price }) => (
-    <li className="product-list-item" key={id}>
-        <img alt="product" className="product-list-item__image" src={image} />
-        <span className="product-list-item__title">{title}</span>
-        <span className="product-list-item__price">{price}$</span>
-        <button className="product-list-item__btn">Add to Cart</button>
-    </li>
-)
+import { IProduct } from "../api/apiModel"
 
-export default Item
+export default function Item({ id, image, title, price }: IProduct) {
+    return (
+        <li className="product-list-item" key={id}>
+            <img key={image} alt="product" className="product-list-item__image" src={image} />
+            <span key={title} className="product-list-item__title">{title}</span>
+            <span key={price} className="product-list-item__price">{price}$</span>
+            <button key="btn" className="product-list-item__btn">Add to Cart</button>
+        </li>
+    )
+} 
