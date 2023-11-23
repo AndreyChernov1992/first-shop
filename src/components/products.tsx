@@ -1,32 +1,29 @@
-import { Component } from "react";
+import { useEffect, useState } from "react";
 import { getProductsData } from "../services/products";
 import Item from "./productsList";
 import { IProduct } from "../api/apiModel";
 
-class ProductsList extends Component {
-    state = {
-        products: []
-    }
+export default function ProductsList () {
+    const [products, setProducts] = useState([])
 
-    componentDidMount() {
+    useEffect (() => {
         const getProducts = async() => {
             try {
-              const products = await getProductsData()
-              this.setState({products})
+              const data = await getProductsData()
+              setProducts(data)
             }
             catch (err) {
               console.log(err)
             }
-          }
+      }
       
       getProducts()
-    }
 
-    render () {
-        return (
-          <ul className="product-list">{this.state.products.map(product => <Item {...product as IProduct} />)}</ul>
-        )
-    }
-}
+    }, [products])
 
-export default ProductsList
+
+    return (
+      <ul className="product-list">{products.map(product => <Item {...product as IProduct} />)}</ul>
+    )
+  }
+
