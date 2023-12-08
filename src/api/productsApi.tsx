@@ -4,7 +4,7 @@ class ProductsApi extends BaseApi  {
 
     endpoint = '/products'
     
-    getProducts (config) {
+    getProducts(config?: object) {
         return this.request('GET', '', config)
     }
 
