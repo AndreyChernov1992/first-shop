@@ -3,7 +3,7 @@ import axiosClient from './apiClient';
 export class BaseApi {
     endpoint = '';
 
-    getUrl(path: string) {
+    getUrl(path) {
         let fullUrl = [ this.endpoint, path ]
             .filter(Boolean)
             .join('/');
@@ -13,7 +13,7 @@ export class BaseApi {
         return fullUrl;
     }
 
-    request(method: string, url: string, config?: object) {
+    request(method, url, config) {
         const requestUrl = this.getUrl(url);
         const requestConfig = { ...config, method, url: requestUrl };
         return axiosClient(requestConfig);
