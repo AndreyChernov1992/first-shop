@@ -1,15 +1,14 @@
 import { BaseApi } from './BaseApi';
 
 class ProductsApi extends BaseApi {
-
   getProducts(config) {
-    return this.request('GET', config);
+    return this.request('GET', '/products', config);
   }
   addProducts(config) {
-    return this.request('POST', config);
+    return this.request('POST', '/products', config);
   }
   removeProducts(config) {
-    return this.request('DELETE', config);
+    return this.request('DELETE', `/products/${config}`, '');
   }
 }
 
