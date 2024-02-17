@@ -3,6 +3,7 @@ import ProductsApi from '../api/productsApi';
 export async function getProductsData() {
   const api = new ProductsApi();
   const { data } = await api.getProducts();
+  // console.log(data);
   return data;
 }
 

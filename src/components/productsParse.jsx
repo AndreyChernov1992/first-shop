@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { deleteProduct } from '../store/productSlice';
 import { deleteProductsData } from '../services/products';
 
-export default function List() {
+export default function ProductsParse() {
     
   const productsArray = useSelector((state) => state.products);
 
@@ -11,10 +11,10 @@ export default function List() {
   const deleteItem = async (id) => {
     try {
       deleteProductsData(id);
+      dispatch(deleteProduct(id));
     } catch (err) {
       console.log(err);
     }
-    dispatch(deleteProduct(id));
   };
 
   return productsArray.map((product) => (

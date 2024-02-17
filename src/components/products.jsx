@@ -1,8 +1,8 @@
 import { getProductsData } from "../services/products";
-import List from "./productsList";
+import ProductsParse from "./productsParse";
 import { useDispatch } from "react-redux";
 import { saveProduct } from "../store/productSlice";
-import Form from "./productsForm";
+import ProductsForm from "./productsForm";
 import { useEffect } from "react";
 
 export default function ProductsList () {
@@ -11,6 +11,7 @@ export default function ProductsList () {
   const loadData = async () => {
     try {
       const data = await getProductsData()
+      
       dispatch(saveProduct(data))
     }
     catch (err) {
@@ -24,9 +25,9 @@ export default function ProductsList () {
 
   return (
     <div>
-      <Form />
+      <ProductsForm />
       <ul className="product-list">
-        <List />
+        <ProductsParse />
       </ul>
     </div>
   )

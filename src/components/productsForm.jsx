@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 const emptyProduct = {title: '', price: '', image: ''}
 
-export default function Form() {
+export default function ProductsForm() {
 
   const [newProduct, setNewProduct] = useState(emptyProduct)
 

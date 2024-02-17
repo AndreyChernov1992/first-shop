@@ -1,23 +1,25 @@
-import axios from "axios";
+import axios from 'axios';
 
 const axiosClient = axios.create({
-    baseURL: process.env.REACT_APP_BASE_URL,
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    }
+  // baseURL: process.env.REACT_APP_BASE_URL,
+  headers: {
+    Accept: 'application/json',
+    'Content-Type': 'application/json',
+  },
 });
 
 axiosClient.interceptors.response.use(
-  response => response, 
-  error => {
+  (response) => response,
+  (error) => {
     if (error.status === 401) {
-      const url = process.env.REACT_APP_BASE_URL
-      window.location.href = url
+      const url = process.env.REACT_APP_BASE_URL;
+      window.location.href = url;
     }
-    console.error("Looks like there was a problem. Status Code: " + error.status);
+    console.error(
+      'Looks like there was a problem. Status Code: ' + error.status,
+    );
     return Promise.reject(error);
-  }
+  },
 );
 
 axiosClient.interceptors.request.use(
@@ -32,4 +34,5 @@ axiosClient.interceptors.request.use(
   }
 )
 
-  export default axiosClient;
+
+export default axiosClient;
