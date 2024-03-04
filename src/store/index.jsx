@@ -1,12 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import productReducer from "./productSlice";
-// import { enableMapSet } from "immer";
-
-// enableMapSet()
+import cartReducer from "./cartSlice";
 
 export default configureStore({
     reducer: {
-        products: productReducer
+        products: productReducer,
+        cart: cartReducer
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware({
             serializableCheck: false

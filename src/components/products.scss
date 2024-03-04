@@ -1,81 +1,103 @@
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
 .product-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 
   &-form {
-    display: block;
-    text-align: center;
-    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
     padding: 5px;
+
+    &-add {
+      @include button-shared;
+    }
+
+    &-cart {
+      @include button-shared;
+    }
   }
 
   &-item {
     display: block;
     width: 320px;
     padding: 20px;
-    text-decoration: none;
     text-align: center;
     border: ridge;
 
-    &__btn {
+    &-delete {
       @include block-shared;
     }
 
-    &__image {
-      @include block-shared;
-      align-items: center;
+    &-image {
       width: 240px;
       height: 320px;
     }
 
-    &__title {
+    &-title {
       @include block-shared;
       font-weight: bold;
       font-size: $primary-font;
     }
 
-    &__price {
+    &-price {
       font-weight: bold;
       font-size: $primary-font;
       color: $secondary-color;
     }
 
+    &-cart {
+      margin: 3px;
+    }
+
     @media (max-width: $laptop) {
       width: 192px;
-      height: 352px;
+      height: 330px;
 
-      &__image {
+      &-image {
         width: 120px;
-        height: 240px;
+        height: 200px;
       }
 
-      &__btn {
+      &-delete {
         font-size: 11px;
       }
 
-      &__title {
+      &-cart {
+        font-size: 11px;
+      }
+
+      &-title {
         font-size: $secondary-font;
       }
 
-      &__price {
+      &-price {
         font-size: $secondary-font;
       }
     }
     @media (max-width: $mobile) {
       width: 120px;
-      height: 288px;
+      height: 270px;
 
-      &__title {
+      &-title {
         font-size: $min-font;
       }
 
-      &__price {
+      &-price {
         font-size: $min-font;
       }
 
-      &__btn {
+      &-delete {
         font-size: $min-font;
+      }
+
+      &-cart {
+        font-size: $min-font;
+        margin: auto;
       }
     }
   }

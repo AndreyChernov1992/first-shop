@@ -1,5 +1,8 @@
-@import "./fonts";
-@import "./variables";
-@import "./mixins";
-@import "./src/components/products";
-@import "./components/scrollbar";
+@import './fonts';
+@import './variables';
+@import './mixins';
+@import './src/components/products';
+@import './components/scrollbar';
+@import 'react-pure-modal/dist/react-pure-modal.min.css';
+@import './src/components/cart/cart';
+@import './src/components/productPage';
