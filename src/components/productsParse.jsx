@@ -1,12 +1,16 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { addToCart } from '../store/cartSlice';
-import { deleteItem } from '../store/hooks/hooks';
+import { useDeleteItem } from '../store/hooks/hooks';
+// import useHooks from '../store/hooks/hooks';
 
 export default function ProductsParse() {
   const productsArray = useSelector((state) => state.products);
 
   const dispatch = useDispatch();
+  // const { deleteItem } = useHooks();
+
+  // console.log(deleteItem);
 
   // const deleteItem = async (id) => {
   //   try {
@@ -40,7 +44,7 @@ export default function ProductsParse() {
               </span>
             </Link>
             <button
-              onClick={() => deleteItem(product.id)}
+              onClick={() => useDeleteItem(product.id)}
               className='product-list-item-delete'
             >
               Delete

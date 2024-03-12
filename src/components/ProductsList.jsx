@@ -2,9 +2,12 @@ import ProductsParse from './ProductsParse';
 import ProductsForm from './ProductsForm';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { saveData } from '../store/hooks/hooks';
+import { useSaveData } from '../store/hooks/hooks';
 
 export default function ProductsList() {
+  // const data = () => useSaveData()
+  // const { saveData } = useHooks();
+  // console.log(saveData());
   // const dispatch = useDispatch();
 
   // const loadData = async () => {
@@ -18,7 +21,7 @@ export default function ProductsList() {
   // };
 
   useEffect(() => {
-    saveData();
+    useSaveData();
   }, []);
 
   return (

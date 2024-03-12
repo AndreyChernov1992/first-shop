@@ -3,13 +3,15 @@
 // import { addProduct } from '../store/productSlice';
 import { useState } from 'react';
 import PureModal from 'react-pure-modal';
-import { handleSubmit } from '../store/hooks/hooks';
+import { useSubmit } from '../store/hooks/hooks';
+// import  useHooks  from '../store/hooks/hooks';
 
 const emptyProduct = { title: '', price: '', image: '' };
 
 export default function ProductsForm() {
   const [newProduct, setNewProduct] = useState(emptyProduct);
   const [modalToggle, setModalToggle] = useState(false);
+  // const {handleSubmit} = useHooks()
 
   // const dispatch = useDispatch();
 
@@ -69,7 +71,7 @@ export default function ProductsForm() {
         <input
           type='button'
           value='Sumbit'
-          onClick={() => handleSubmit(setNewProduct(), newProduct, emptyProduct)}
+          onClick={() => useSubmit(setNewProduct(), newProduct, emptyProduct)}
         ></input>
       </PureModal>
     </div>
