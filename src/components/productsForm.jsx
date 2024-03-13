@@ -1,9 +1,9 @@
-// import { useDispatch } from 'react-redux';
-// import { addProductsData } from '../services/productsApi';
-// import { addProduct } from '../store/productSlice';
+import { useDispatch } from 'react-redux';
+import { addProductsData } from '../services/productsApi';
+import { addProduct } from '../store/productSlice';
 import { useState } from 'react';
 import PureModal from 'react-pure-modal';
-import { useSubmit } from '../store/hooks/hooks';
+// import { useSubmit } from '../store/hooks/hooks';
 // import  useHooks  from '../store/hooks/hooks';
 
 const emptyProduct = { title: '', price: '', image: '' };
@@ -13,18 +13,18 @@ export default function ProductsForm() {
   const [modalToggle, setModalToggle] = useState(false);
   // const {handleSubmit} = useHooks()
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // const handleSubmit = () => {
-  //   try {
-  //     addProductsData(newProduct).then((data) => {
-  //       dispatch(addProduct(data));
-  //       setNewProduct(emptyProduct);
-  //     });
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
+  const handleSubmit = () => {
+    try {
+      addProductsData(newProduct).then((data) => {
+        dispatch(addProduct(data));
+        setNewProduct(emptyProduct);
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const onChange = (key, value) =>
     setNewProduct((prev) => ({ ...prev, [key]: value }));
@@ -71,7 +71,7 @@ export default function ProductsForm() {
         <input
           type='button'
           value='Sumbit'
-          onClick={() => useSubmit(setNewProduct(), newProduct, emptyProduct)}
+          onClick={() => dispatch(handleSubmit())}
         ></input>
       </PureModal>
     </div>

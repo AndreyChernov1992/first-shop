@@ -2,26 +2,29 @@ import ProductsParse from './ProductsParse';
 import ProductsForm from './ProductsForm';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useSaveData } from '../store/hooks/hooks';
+import { saveProduct } from '../store/productSlice';
+import { getProductsData } from '../services/productsApi';
+import { useDispatch } from 'react-redux';
+// import { useSaveData } from '../store/hooks/hooks';
 
 export default function ProductsList() {
   // const data = () => useSaveData()
   // const { saveData } = useHooks();
   // console.log(saveData());
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // const loadData = async () => {
-  //   try {
-  //     const data = await getProductsData();
+  const loadData = async () => {
+    try {
+      const data = await getProductsData();
 
-  //     dispatch(saveProduct(data));
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
+      dispatch(saveProduct(data));
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   useEffect(() => {
-    useSaveData();
+    loadData();
   }, []);
 
   return (

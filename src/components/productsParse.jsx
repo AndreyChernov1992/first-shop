@@ -1,7 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { addToCart } from '../store/cartSlice';
-import { useDeleteItem } from '../store/hooks/hooks';
+import { deleteProductsData } from '../services/productsApi';
+import { deleteProduct } from '../store/productSlice';
+// import { useDeleteItem } from '../store/hooks/hooks';
 // import useHooks from '../store/hooks/hooks';
 
 export default function ProductsParse() {
@@ -12,14 +14,14 @@ export default function ProductsParse() {
 
   // console.log(deleteItem);
 
-  // const deleteItem = async (id) => {
-  //   try {
-  //     deleteProductsData(id);
-  //     dispatch(deleteProduct(id));
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
+  const deleteItem = async (id) => {
+    try {
+      deleteProductsData(id);
+      dispatch(deleteProduct(id));
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const list = () => {
     return (
@@ -44,7 +46,7 @@ export default function ProductsParse() {
               </span>
             </Link>
             <button
-              onClick={() => useDeleteItem(product.id)}
+              onClick={() => deleteItem(product.id)}
               className='product-list-item-delete'
             >
               Delete

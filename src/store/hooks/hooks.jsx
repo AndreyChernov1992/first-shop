@@ -7,8 +7,9 @@ import {
 } from '../../services/productsApi';
 
 export const useSaveData = () => {
+  const dispatch = useDispatch();
   return async () => {
-    const dispatch = useDispatch();
+    
     try {
       const data = await getProductsData();
       dispatch(saveProduct(data));
