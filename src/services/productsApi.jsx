@@ -17,3 +17,9 @@ export async function deleteProductsData(product) {
   const { data } = await api.removeProducts(product);
   return data;
 }
+
+export async function getSingleProductData(product) {
+  const api = new ProductsApi();
+  const { data } = await api.getSingleProduct(product);
+  return data;
+}

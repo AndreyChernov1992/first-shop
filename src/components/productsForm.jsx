@@ -3,15 +3,12 @@ import { addProductsData } from '../services/productsApi';
 import { addProduct } from '../store/productSlice';
 import { useState } from 'react';
 import PureModal from 'react-pure-modal';
-// import { useSubmit } from '../store/hooks/hooks';
-// import  useHooks  from '../store/hooks/hooks';
 
 const emptyProduct = { title: '', price: '', image: '' };
 
 export default function ProductsForm() {
   const [newProduct, setNewProduct] = useState(emptyProduct);
   const [modalToggle, setModalToggle] = useState(false);
-  // const {handleSubmit} = useHooks()
 
   const dispatch = useDispatch();
 

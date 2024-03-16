@@ -10,6 +10,9 @@ class ProductsApi extends BaseApi {
   removeProducts(config) {
     return this.request('DELETE', `/products/${config}`, '');
   }
+  getSingleProduct(config) {
+    return this.request('GET', `/products/${config}`, '');
+  }
 }
 
 export default ProductsApi;

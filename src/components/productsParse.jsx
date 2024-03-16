@@ -3,16 +3,10 @@ import { Link } from 'react-router-dom';
 import { addToCart } from '../store/cartSlice';
 import { deleteProductsData } from '../services/productsApi';
 import { deleteProduct } from '../store/productSlice';
-// import { useDeleteItem } from '../store/hooks/hooks';
-// import useHooks from '../store/hooks/hooks';
-
 export default function ProductsParse() {
   const productsArray = useSelector((state) => state.products);
 
   const dispatch = useDispatch();
-  // const { deleteItem } = useHooks();
-
-  // console.log(deleteItem);
 
   const deleteItem = async (id) => {
     try {
