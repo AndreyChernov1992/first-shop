@@ -1,22 +1,25 @@
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { getSingleProductData } from '../../services/productsApi';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function ProductPage() {
   const { id } = useParams();
   const productsArray = useSelector((state) => state.products);
-  let product = productsArray.find((product) => product.id == id);
-  const data = async () => await getSingleProductData(id)
+  const [product,setProduct] = useState({})
 
   useEffect(() => {
-    if (!product) {
-      product = data()
-      console.log(data)
-      if (!data) {
-        return <div>No Product</div>
-      }  
-    }
+    let currentProduct = productsArray?.find((product) => product.id === id);
+        const getProduct = async () => {
+               try {
+                   const data = await getSingleProductData(id);
+                   data ? setProduct(data) : setProduct(currentProduct)
+               }
+               catch (e) {
+                   console.log(e)
+               }
+           }
+        getProduct();
   },[id])
 
   return (
