@@ -2,10 +2,10 @@ import ProductsParse from './ProductsParse';
 import ProductsForm from './ProductsForm';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { saveProduct } from '../store/productSlice';
+import { saveProduct } from '../store/slice/productSlice';
 import { getProductsData } from '../services/productsApi';
 import { useDispatch } from 'react-redux';
-
+import cls from './ProductsForm.module.scss'
 
 export default function ProductsList() {
   const dispatch = useDispatch();
@@ -25,10 +25,10 @@ export default function ProductsList() {
 
   return (
     <div>
-      <div className='product-list-form'>
+      <div className={cls.productListForm}>
         <ProductsForm />
         <Link to={`/cart/`}>
-          <button className='product-list-form-cart'>Cart</button>
+          <button className={cls.productListFormCart}>Cart</button>
         </Link>
       </div>
       <ProductsParse />

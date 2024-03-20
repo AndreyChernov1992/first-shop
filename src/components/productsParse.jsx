@@ -1,8 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { addToCart } from '../store/cartSlice';
+import { addToCart } from '../store/slice/cartSlice';
 import { deleteProductsData } from '../services/productsApi';
-import { deleteProduct } from '../store/productSlice';
+import { deleteProduct } from '../store/slice/productSlice';
+import cls from './ProductsParse.module.scss'
+
 export default function ProductsParse() {
   const productsArray = useSelector((state) => state.products);
 
@@ -10,52 +12,48 @@ export default function ProductsParse() {
 
   const deleteItem = async (id) => {
     try {
-      deleteProductsData(id);
+      await deleteProductsData(id);
       dispatch(deleteProduct(id));
     } catch (err) {
       console.log(err);
     }
   };
 
-  const list = () => {
-    return (
-      <ul className='product-list'>
-        {productsArray.map((product) => (
-          <li
-            className='product-list-item'
+  return (
+    <ul className={cls.productList}>
+      {productsArray.map((product) => (
+        <li
+          className={cls.productListItem}
+          key={product.id}
+        >
+          <Link
+            to={`/product/${product.id}`}
             key={product.id}
           >
-            <Link
-              to={`/product/${product.id}`}
-              key={product.id}
-            >
-              <img
-                alt='product'
-                className='product-list-item-image'
-                src={product.image}
-              />
-              <span className='product-list-item-title'>{product.title}</span>
-              <span className='product-list-item-price'>
-                {product.price.toFixed(2)}$
-              </span>
-            </Link>
-            <button
-              onClick={() => deleteItem(product.id)}
-              className='product-list-item-delete'
-            >
-              Delete
-            </button>
-            <button
-              className='product-list-item-cart'
-              onClick={() => dispatch(addToCart(product))}
-            >
-              Add to Cart
-            </button>
-          </li>
-        ))}
-      </ul>
-    );
-  };
-
-  return list();
+            <img
+              alt='product'
+              className={cls.productListItemImage}
+              src={product.image}
+            />
+            <span className={cls.productListItemTitle}>{product.title}</span>
+            <span className={cls.productListItemPrice}>
+              {product.price.toFixed(2)}$
+            </span>
+          </Link>
+          <button
+            onClick={() => deleteItem(product.id)}
+            className={cls.productListItemDel}
+          >
+            Delete
+          </button>
+          <button
+            className={cls.productListItemCart}
+            onClick={() => dispatch(addToCart(product))}
+          >
+            Add to Cart
+          </button>
+        </li>
+      ))}
+    </ul>
+  );
 }

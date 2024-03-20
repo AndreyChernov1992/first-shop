@@ -1,25 +1,25 @@
-.product-page {
+.productPage {
   display: flex;
   flex-direction: column;
   align-items: center;
   list-style-type: none;
 
-  &-image {
+  &Image {
     width: 60vh;
   }
 
-  &-title {
+  &Title {
     font-size: 30px;
     font-weight: bold;
     margin: 10px;
   }
 
-  &-desription {
+  &Desription {
     font-size: 20px;
     margin-bottom: 10px;
   }
 
-  &-price {
+  &Price {
     font-size: 30px;
     color: green;
     font-weight: bold;

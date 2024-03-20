@@ -1,8 +1,9 @@
 import { useDispatch } from 'react-redux';
 import { addProductsData } from '../services/productsApi';
-import { addProduct } from '../store/productSlice';
+import { addProduct } from '../store/slice/productSlice';
 import { useState } from 'react';
 import PureModal from 'react-pure-modal';
+import cls from './ProductsForm.module.scss'
 
 const emptyProduct = { title: '', price: '', image: '' };
 
@@ -13,24 +14,26 @@ export default function ProductsForm() {
   const dispatch = useDispatch();
 
   const handleSubmit = () => {
-    try {
-      addProductsData(newProduct).then((data) => {
+    addProductsData(newProduct)
+      .then((data) => {
         dispatch(addProduct(data));
         setNewProduct(emptyProduct);
-      });
-    } catch (err) {
-      console.log(err);
-    }
+      })
+      .catch(err => console.log(err))
   };
 
   const onChange = (key, value) =>
     setNewProduct((prev) => ({ ...prev, [key]: value }));
+  
+  const modalWindowToggle = () => {
+    setModalToggle(!modalToggle)
+  }
 
   return (
     <div>
       <button
-        className='product-list-form-add'
-        onClick={() => setModalToggle(!modalToggle)}
+        className={cls.productListFormAdd}
+        onClick={() => modalWindowToggle()}
       >
         Add Product
       </button>

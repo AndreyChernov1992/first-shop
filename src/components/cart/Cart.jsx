@@ -1,10 +1,13 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteFromCart } from '../../store/cartSlice';
+import { deleteFromCart } from '../../store/slice/cartSlice';
 
 export default function Cart() {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
-  const totalPrice = cart.reduce((accumulator,current) => accumulator + current.price, 0)
+  const totalPrice = cart.reduce(
+    (accumulator, current) => accumulator + current.price,
+    0,
+  );
 
   const list = () => {
     return (
@@ -27,10 +30,14 @@ export default function Cart() {
               src={product.image}
             />
             <span className='cart-list-item-title'>{product.title}</span>
-            <span className='cart-list-item-price'>{product.price.toFixed(2)}$</span>
+            <span className='cart-list-item-price'>
+              {product.price.toFixed(2)}$
+            </span>
           </li>
         ))}
-        <span className='cart-list-total-price'>Total: {totalPrice.toFixed(2)}$</span>
+        <span className='cart-list-total-price'>
+          Total: {totalPrice.toFixed(2)}$
+        </span>
       </ul>
     );
   };

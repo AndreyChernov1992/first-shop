@@ -1,11 +1,5 @@
 import Routing from "./routing/router";
 
-function App() {
-  return (
-    <div>
-      <Routing />
-    </div>
-  )
-}
+const App = () => (<Routing />)
 
 export default App;

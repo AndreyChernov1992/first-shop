@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { getSingleProductData } from '../../services/productsApi';
 import { useEffect, useState } from 'react';
+import cls from './productPage.module.scss'
 
 export default function ProductPage() {
   const { id } = useParams();
@@ -23,15 +24,15 @@ export default function ProductPage() {
   },[id])
 
   return (
-    <ul className='product-page'>
+    <ul className={cls.productPage}>
       <img
-        className='product-page-image'
+        className={cls.productPageImage}
         alt='product'
         src={product.image}
       />
-      <li className='product-page-title'>{product.title}</li>
-      <li className='product-page-description'>{product.description}</li>
-      <li className='product-page-price'>{product.price}$</li>
+      <li className={cls.productPageTitle}>{product.title}</li>
+      <li className={cls.productPageDescription}>{product.description}</li>
+      <li className={cls.productPagePrice}>{product.price}$</li>
     </ul>
   );
 }
