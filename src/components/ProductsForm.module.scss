@@ -1,15 +1,66 @@
 @import '../assets/styles/mixins';
 
+@keyframes hoverAnimationButton {
+  0% {
+    background-color: #6200ea; /* Исходный цвет */
+  }
+  50% {
+    background-color: #9c27b0; /* Цвет в середине анимации */
+  }
+  100% {
+    background-color: #6200ea; /* Возврат к исходному цвету */
+  }
+}
+
+@keyframes headerAnimation {
+  0% {
+    color: #6200ea;
+    transform: translate(120px);
+  }
+  25% {
+    color: green;
+    transform: translate(100px);
+  }
+  50% {
+    color: red;
+    transform: translate(80px);
+  }
+  75% {
+    color: black;
+    transform: translate(60px);
+  }
+  100% {
+    color: #9c27b0;
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  animation: headerAnimation 3s infinite;
+}
+
 .productListForm {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 5px;
 
     &Add {
       @include button-shared;
+      justify-content: flex-end
+    }
+
+    &Add:hover {
+      animation: hoverAnimationButton 0.8s infinite;
     }
 
     &Cart {
       @include button-shared;
+      justify-content: flex-end
+    }
+
+    &Cart:hover {
+      animation: hoverAnimationButton 0.8s infinite;
     }
 }

@@ -1,5 +1,5 @@
-import ProductsParse from './ProductsParse';
-import ProductsForm from './ProductsForm';
+import ProductsForm from './productsForm';
+import ProductsParse from './productsParse';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { saveProduct } from '../store/slice/productSlice';
@@ -27,6 +27,7 @@ export default function ProductsList() {
     <div>
       <div className={cls.productListForm}>
         <ProductsForm />
+        <h1 className={cls.header}>First Shop</h1>
         <Link to={`/cart/`}>
           <button className={cls.productListFormCart}>Cart</button>
         </Link>

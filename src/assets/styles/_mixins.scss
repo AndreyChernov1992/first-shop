@@ -4,6 +4,13 @@
 }
 
 @mixin button-shared {
-  font-weight: bold;
-  padding: 5px;
+  flex: 1;
+  margin: 5px;
+  background-color: #6200ea; /* Цвет фона кнопки */
+  color: white; /* Цвет текста */
+  border: none; /* Убираем стандартную рамку */
+  padding: 15px 30px; /* Отступы сверху/снизу и слева/справа */
+  font-size: 16px; /* Размер шрифта */
+  cursor: pointer; /* Курсор в виде указателя */
+  transition: background-color 0.3s, transform 0.2s; /* Плавные переходы */
 }

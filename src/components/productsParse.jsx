@@ -10,6 +10,13 @@ export default function ProductsParse() {
 
   const dispatch = useDispatch();
 
+  const truncateTitle = (title, limit) => {
+    if (title.length > limit) {
+      return title.slice(0, limit) + '...';
+    }
+    return title;
+  };
+
   const deleteItem = async (id) => {
     try {
       await deleteProductsData(id);
@@ -29,29 +36,34 @@ export default function ProductsParse() {
           <Link
             to={`/product/${product.id}`}
             key={product.id}
+            className={cls.productListLink}
           >
             <img
               alt='product'
               className={cls.productListItemImage}
               src={product.image}
             />
-            <span className={cls.productListItemTitle}>{product.title}</span>
+            <span className={cls.productListItemTitle} title={product.title}>
+              {truncateTitle(product.title, 20)}  
+            </span>
             <span className={cls.productListItemPrice}>
               {product.price.toFixed(2)}$
             </span>
           </Link>
-          <button
-            onClick={() => deleteItem(product.id)}
-            className={cls.productListItemDel}
-          >
-            Delete
-          </button>
-          <button
-            className={cls.productListItemCart}
-            onClick={() => dispatch(addToCart(product))}
-          >
-            Add to Cart
-          </button>
+          <div className={cls.productListItemWrapper}>
+            <button
+              className={cls.productListItemCart}
+              onClick={() => dispatch(addToCart(product))}
+            >
+              Add to Cart
+            </button>
+            <button
+              onClick={() => deleteItem(product.id)}
+              className={cls.productListItemDel}
+            >
+              Delete
+            </button>
+          </div>
         </li>
       ))}
     </ul>
