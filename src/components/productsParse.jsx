@@ -1,14 +1,13 @@
-import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { addToCart } from '../store/slice/cartSlice';
 import { deleteProductsData } from '../services/productsApi';
-import { deleteProduct } from '../store/slice/productSlice';
 import cls from './ProductsParse.module.scss'
+import { observer } from 'mobx-react-lite';
+import cartStore from '../store/cartStore';
+import productsStore from '../store/productsStore';
 
-export default function ProductsParse() {
-  const productsArray = useSelector((state) => state.products);
-
-  const dispatch = useDispatch();
+const ProductsParse = observer(() => {
+  const {addCartProduct} = cartStore;
+  const {products, deleteProduct} = productsStore;
 
   const truncateTitle = (title, limit) => {
     if (title.length > limit) {
@@ -20,7 +19,7 @@ export default function ProductsParse() {
   const deleteItem = async (id) => {
     try {
       await deleteProductsData(id);
-      dispatch(deleteProduct(id));
+      deleteProduct(id);
     } catch (err) {
       console.log(err);
     }
@@ -28,7 +27,7 @@ export default function ProductsParse() {
 
   return (
     <ul className={cls.productList}>
-      {productsArray.map((product) => (
+      {products.map((product) => (
         <li
           className={cls.productListItem}
           key={product.id}
@@ -53,7 +52,7 @@ export default function ProductsParse() {
           <div className={cls.productListItemWrapper}>
             <button
               className={cls.productListItemCart}
-              onClick={() => dispatch(addToCart(product))}
+              onClick={() => addCartProduct(product)}
             >
               Add to Cart
             </button>
@@ -68,4 +67,6 @@ export default function ProductsParse() {
       ))}
     </ul>
   );
-}
+})
+
+export default ProductsParse;

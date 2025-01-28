@@ -1,22 +1,22 @@
-import { useDispatch } from 'react-redux';
 import { addProductsData } from '../services/productsApi';
-import { addProduct } from '../store/slice/productSlice';
 import { useState } from 'react';
 import PureModal from 'react-pure-modal';
 import cls from './ProductsForm.module.scss'
+import productStore from '../store/productsStore'
+import { observer } from 'mobx-react-lite';
 
 const emptyProduct = { title: '', price: '', image: '' };
 
-export default function ProductsForm() {
+const ProductsForm = observer(() => {
   const [newProduct, setNewProduct] = useState(emptyProduct);
   const [modalToggle, setModalToggle] = useState(false);
 
-  const dispatch = useDispatch();
+  const {addProduct} = productStore;
 
   const handleSubmit = () => {
     addProductsData(newProduct)
       .then((data) => {
-        dispatch(addProduct(data));
+        addProduct(data);
         setNewProduct(emptyProduct);
       })
       .catch(err => console.log(err))
@@ -71,9 +71,11 @@ export default function ProductsForm() {
         <input
           type='button'
           value='Sumbit'
-          onClick={() => dispatch(handleSubmit())}
+          onClick={() => handleSubmit()}
         ></input>
       </PureModal>
     </div>
   );
-}
+})
+
+export default ProductsForm;

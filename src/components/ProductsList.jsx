@@ -2,25 +2,15 @@ import ProductsForm from './productsForm';
 import ProductsParse from './productsParse';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { saveProduct } from '../store/slice/productSlice';
-import { getProductsData } from '../services/productsApi';
-import { useDispatch } from 'react-redux';
+import productsStore from '../store/productsStore'
 import cls from './ProductsForm.module.scss'
+import { observer } from 'mobx-react-lite';
 
-export default function ProductsList() {
-  const dispatch = useDispatch();
-
-  const loadData = async () => {
-    try {
-      const data = await getProductsData();
-      dispatch(saveProduct(data));
-    } catch (err) {
-      console.log(err);
-    }
-  };
+const ProductsList = observer(() => {
+  const {getProducts} = productsStore;
 
   useEffect(() => {
-    loadData();
+    getProducts();
   }, []);
 
   return (
@@ -35,4 +25,6 @@ export default function ProductsList() {
       <ProductsParse />
     </div>
   );
-}
+})
+
+export default ProductsList

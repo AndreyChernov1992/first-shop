@@ -1,16 +1,16 @@
 import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import { getSingleProductData } from '../../services/productsApi';
 import { useEffect, useState } from 'react';
 import cls from './productPage.module.scss'
+import productStore from '../../store/productsStore'
 
 export default function ProductPage() {
   const { id } = useParams();
-  const productsArray = useSelector((state) => state.products);
+  const {products} = productStore;
   const [product,setProduct] = useState({})
 
   useEffect(() => {
-    let currentProduct = productsArray?.find((product) => product.id === id);
+    let currentProduct = products?.find((product) => product.id === id);
         const getProduct = async () => {
                try {
                    const data = await getSingleProductData(id);

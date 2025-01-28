@@ -1,9 +1,8 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { deleteFromCart } from '../../store/slice/cartSlice';
+import { observer } from 'mobx-react-lite';
+import cartStore from '../../store/cartStore';
 
-export default function Cart() {
-  const dispatch = useDispatch();
-  const cart = useSelector((state) => state.cart);
+const Cart = observer(() => {
+  const {cart, deleteCartProduct} = cartStore;
   const totalPrice = cart.reduce(
     (accumulator, current) => accumulator + current.price,
     0,
@@ -19,7 +18,7 @@ export default function Cart() {
             key={product.id}
           >
             <button
-              onClick={() => dispatch(deleteFromCart(product.id))}
+              onClick={() => deleteCartProduct(product.id)}
               className='cart-list-item-delete'
             >
               X
@@ -43,4 +42,6 @@ export default function Cart() {
   };
 
   return <div>{list()}</div>;
-}
+})
+
+export default Cart;
