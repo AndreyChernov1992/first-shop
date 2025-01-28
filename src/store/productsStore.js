@@ -1,4 +1,4 @@
-import { makeObservable, observable, action } from "mobx"
+import { makeObservable, observable, action, flow } from "mobx"
 import { getProductsData } from "../services/productsApi"
 
 class Products {
@@ -9,7 +9,7 @@ class Products {
             products: observable,
             deleteProduct: action.bound,
             addProducts: action.bound,
-            getProducts: action.bound,
+            getProducts: flow.bound,
         })
     }
 
@@ -21,9 +21,9 @@ class Products {
         this.products = this.products.filter((product) => product.id !== id)
     }
 
-    async getProducts() {
+    *getProducts() {
         try {
-            const data = await getProductsData()
+            const data = yield getProductsData()
             this.products = [...data]
         } catch (error) {
             console.error("Failed to fetch products:", error)
